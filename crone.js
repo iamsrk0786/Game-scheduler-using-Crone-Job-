@@ -4,7 +4,7 @@ import Game from './models/game.js';
 
 const fetchAndUpdateGameData = async () => {
   try {
-    const { data } = await axios.get('https://api.example.com/games');
+    const { data } = await axios.get('https://api.example.com/games'); // fetch data from an api and loop on every game and check exist and not exist(insert and update database)
 
     for (const game of data) {
       const existing = await Game.findOne({
@@ -27,4 +27,4 @@ const fetchAndUpdateGameData = async () => {
   }
 };
 
-cron.schedule('0 0 * * *', fetchAndUpdateGameData);
+cron.schedule('0 0 * * *', fetchAndUpdateGameData); // run every night 12:00 am
